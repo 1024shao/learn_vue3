@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <!-- template会被浏览器识别,但是浏览器不会渲染里面的内容  -->
+  <template id='why'>
+    <h2>{{num}}</h2>
+    <button @click='add'> +1</button>
+    <button @click='sub'> -1</button>
+  </template>
+
+  <script src="../../js/vue.global.js"></script>
+  <script>
+    Vue.createApp({
+      template: '#why',
+      data() {
+        return {
+          num: 100
+        }
+      },
+      methods: {
+        add() {
+          this.num++
+        },
+        sub() {
+          this.num--
+        }
+      }
+    }).mount('#app')
+  </script>
+</body>
+
+</html>
