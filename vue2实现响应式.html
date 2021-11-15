@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // vue2 实现响应式 无法捕获到添加和删除属性
+    let obj = {
+      name: '张三',
+      age: 20
+    }
+    let p = {}
+    Object.keys(obj).forEach(item => {
+      Object.defineProperty(p, item, {
+        get() {
+          return obj[item]
+        },
+        set(value) {
+          console.log(`有人修改了${item}属性`)
+          obj[item] = value
+        }
+      })
+    })
+  </script>
+</body>
+
+</html>
