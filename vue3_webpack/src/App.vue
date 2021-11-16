@@ -1,14 +1,31 @@
 <template>
-  <Demo />
+  <div class="father">
+    <h2>我是父组件</h2>
+    <Suspence>
+      <template #default>
+        <Child />
+      </template>
+      <template #fallback>
+        <h2>is loading</h2>
+      </template>
+    </Suspence>
+  </div>
 </template>
 
 <script>
-import Demo from './components/Demo.vue'
+// import Child from './components/Child.vue'
+import { defineAsyncComponent } from 'vue'
+const Child = defineAsyncComponent(() => import('./components/Child.vue'))
 export default {
-  name: 'App',
   components: {
-    Demo
-  },
-
+    Child
+  }
 }
 </script>
+
+<style>
+.father {
+  background-color: saddlebrown;
+  height: 400px;
+}
+</style>
